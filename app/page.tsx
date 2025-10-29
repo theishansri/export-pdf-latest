@@ -1,65 +1,106 @@
-import Image from "next/image";
+"use client";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+    <div className="font-sans min-h-screen flex flex-col items-center justify-center px-6 py-10 overflow-y-auto">
+      <div className="max-w-3xl text-gray-800 space-y-4">
+        <h1 className="text-2xl font-bold text-center mb-4">
+          PDF Generation Evaluation
+        </h1>
+        <p>We evaluated two approaches already available in Classic Sphere:</p>
+        <table className="table-auto border-collapse border border-gray-300 w-full text-left text-sm">
+          <thead>
+            <tr className="bg-gray-100">
+              <th className="border border-gray-300 px-4 py-2">Feature</th>
+              <th className="border border-gray-300 px-4 py-2">React PDF</th>
+              <th className="border border-gray-300 px-4 py-2">
+                Print Manager
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="border border-gray-300 px-4 py-2">
+                Chart/Canvas Support
+              </td>
+              <td className="border border-gray-300 px-4 py-2">
+                ❌ Limited support. Requires converting charts to images.
+              </td>
+              <td className="border border-gray-300 px-4 py-2">
+                ✅ Fully supported. Uses native browser rendering.
+              </td>
+            </tr>
+            <tr>
+              <td className="border border-gray-300 px-4 py-2">
+                HTML/CSS Rendering
+              </td>
+              <td className="border border-gray-300 px-4 py-2">
+                📉 Harder to style. You need to learn a new way to write layouts
+                and styles, which is different from regular HTML and CSS.
+              </td>
+              <td className="border border-gray-300 px-4 py-2">
+                ✅ Easy to style. You can use regular HTML and CSS, just like
+                building a normal webpage.
+              </td>
+            </tr>
+            <tr>
+              <td className="border border-gray-300 px-4 py-2">
+                Accessibility
+              </td>
+              <td className="border border-gray-300 px-4 py-2">
+                ♿ No built-in support for semantic tags or ARIA.
+              </td>
+              <td className="border border-gray-300 px-4 py-2">
+                ✅ Preserves basic accessibility if the source document is
+                accessible.
+              </td>
+            </tr>
+            <tr>
+              <td className="border border-gray-300 px-4 py-2">Library Size</td>
+              <td className="border border-gray-300 px-4 py-2">
+                📄 React PDF: Minified size ~1.2 MB, Gzipped size ~300 KB.
+                <br />
+                HTML Canvas: Minified size ~150 KB, Gzipped size ~50 KB.
+              </td>
+              <td className="border border-gray-300 px-4 py-2">
+                📄 No additional library required. Uses browser's built-in
+                print-to-PDF feature.
+              </td>
+            </tr>
+            <tr>
+              <td className="border border-gray-300 px-4 py-2">Dependencies</td>
+              <td className="border border-gray-300 px-4 py-2">
+                Requires <code>@react-pdf/renderer</code> and optionally{" "}
+                <code>html2canvas</code>.
+              </td>
+              <td className="border border-gray-300 px-4 py-2">
+                No external dependencies. Uses <code>window.print()</code>.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        {/* Note below the table */}
+        <p className="text-sm text-gray-600 mt-4">
+          <strong>Note:</strong> For heavier data (e.g., large tables or many
+          charts), the performance of both libraries can be on the slower side.
+          Consider optimizing the data or using a server-side solution for
+          better performance.
+        </p>
+
+        <h2 className="text-xl font-semibold mt-6">Recommendation for MVP</h2>
+        <p>
+          Given the simplicity (no extra dependency), fidelity to the existing
+          UI, and acceptable accessibility passthrough, proceed with Print
+          Manager for the MVP—while applying print-optimized styles to reduce
+          complexity.
+        </p>
+        <p>
+          For heavier documents (very large tables, many charts, or strict
+          accessibility/tagging requirements), plan a server-side PDF option
+          (e.g., Puppeteer) as a follow-up.
+        </p>
+      </div>
     </div>
   );
 }
